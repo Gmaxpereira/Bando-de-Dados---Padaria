@@ -26,7 +26,7 @@ cod_mat_prima INTEGER (PK)
 nome VARCHAR(40)
 custo FLOAT
 quantidade FLOAT 
-data_entrega DAT
+data_entrega DATE
 cnpj_fornecedor VARCHAR (14) (FK)
 )
 ;
@@ -34,10 +34,10 @@ cnpj_fornecedor VARCHAR (14) (FK)
 CREATE TABLE almoxarifado (
 
 cod_almox INTEGER (PK) 
-nome VARCHAR(40)
+nome VARCHAR(20)
 custo FLOAT
 quantidade FLOAT
-cnjp_fornecedor VARCHAR(20) (FK)
+cnjp_fornecedor VARCHAR(14) (FK)
 )
 ;
 
