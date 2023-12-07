@@ -19,7 +19,7 @@ telefone VARCHAR(11)
 forma_paga VARCHAR(20)
 )
 
-CREATE TABLE Materia_prima(
+CREATE TABLE Materia_prima (
 
 cod_mat_prima INTEGER (PK)
 nome VARCHAR(40)
@@ -47,7 +47,7 @@ cod_produto INTEGER (PK) (FK)
 )
 
 
-CREATE TABLE materia_prima_receita(
+CREATE TABLE materia_prima_receita (
 
 cod_mat_prima INTEGER (PK) (FK)
 cod_receita INTEGER (PK) (FK)
@@ -55,7 +55,7 @@ quantidade FLOAT
 )
 
 
-CREATE TABLE produto(
+CREATE TABLE produto (
 
 cod_produto INTEGER (PK)
 cod_barras VARCHAR (20)
@@ -69,7 +69,7 @@ cod_receita INTEGER NULL (FK)
 )
 
 
-CREATE TABLE receita(
+CREATE TABLE receita (
 
 cod_receita INTEGER (PK)
 custo_bruto FLOAT
@@ -78,7 +78,7 @@ categoria VARCHAR (30)
 )
 
 
-CREATE TABLE endereco(
+CREATE TABLE endereco (
 
 cep INTERGER
 rua VARCHAR (70)
@@ -90,7 +90,7 @@ cpf_cliente VARCHAR (11) (PK) (FK)
 )
 
 
-CREATE TABLE cliente(
+CREATE TABLE cliente (
 
 cpf_cliente VARCHAR (11) (PK)
 nome VARCHAR (90)
@@ -100,7 +100,7 @@ possui_credito BOOLEAN
 )
 
 
-CREATE TABLE produto_venda(
+CREATE TABLE produto_venda (
 
 cod_produto INTEGER (PK) (FK)
 cod_venda INTEGER (PK) (FK)
@@ -108,14 +108,14 @@ quantidade FLOAT
 )
 
 
-CREATE TABLE cliente_venda(
+CREATE TABLE cliente_venda (
 
 cpf_cliente VARCHAR(11) (PK) (FK)
 cod_venda INTEGER (PK) (FK)
 )
 
 
-CREATE TABLE venda(
+CREATE TABLE venda (
 cod_venda INTEGER (PK)
 data_hora DATETIME
 valor_total FLOAT 
