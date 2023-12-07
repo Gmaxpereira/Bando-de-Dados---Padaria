@@ -1,12 +1,17 @@
 -- Uma consulta com junção interna e com a cláusula de seleção where:
+
 SELECT v.data_hora, v.valor_total AS valor_compra, cv.cpf_cliente AS cpf, c.nome
 FROM venda v
 JOIN cliente_venda cv ON v.cod_venda = cv.cod_venda
 JOIN cliente c ON cv.cpf_cliente = c.cpf_cliente
 WHERE c.possui_credito = 1; 
 
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 --Uma consulta com junção externa e com a cláusula de seleção where:
+
 SELECT c.nome AS nome_cliente, e.rua, e.numero, e.bairro, e.cidade
 FROM cliente c
 LEFT JOIN endereco e ON c.cpf_cliente = e.cpf_cliente;
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
