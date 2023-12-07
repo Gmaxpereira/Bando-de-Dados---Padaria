@@ -1,0 +1,147 @@
+=> Script 1:
+
+-- Tabela almoxarifado
+INSERT INTO almoxarifado (nome, custo, quantidade, cnpj_fornecedor) VALUES
+('copo', 4.5, 50, '22222222222222'),
+('caixa', 3, 30, '22222222222222'),
+('sacola', 7, 20, '33333333333333');
+
+-- Tabela cliente
+INSERT INTO cliente (cpf_cliente, nome, saldo, telefone, possui_credito) VALUES
+('12345678901', 'Maria da Silva', 150.25, '31987654321', 1),
+('98765432109', 'João Oliveira', 50, '31901234567', 0);
+
+-- Tabela cliente_venda
+INSERT INTO cliente_venda (cpf_cliente, cod_venda) VALUES
+('12345678901', 1),
+('98765432109', 2);
+
+-- Tabela duplicata
+INSERT INTO duplicata (cod_barras, data_gera, data_venc, situacao, valor, cnpj_fornecedor) VALUES
+('456', '2023-12-06', '2023-12-20', 'sim', 20, '22222222222222'),
+('789', '2023-12-06', '2023-12-20', 'não', 15, '33333333333333');
+
+-- Tabela endereco
+INSERT INTO endereco (cep, rua, numero, bairro, cidade, complemento, cpf_cliente) VALUES
+('12345-678', 'Rua das Flores', '100', 'Centro', 'São Paulo', 'Apto 101', '12345678901'),
+('98765-432', 'Av. Brasil', '500', 'Jardim América', 'Rio de Janeiro', NULL, '98765432109');
+
+-- Tabela fechamento_caixa (considerando vendas do dia)
+INSERT INTO fechamento_caixa (data_fechamento, valor_total, valor_cedulas, valor_moedas, valor_debito, valor_credito, codigo_venda) VALUES
+('2023-12-06', 1200.75, 600, 0.75, 500, 100, 2),
+('2023-12-07', 850.25, 300, 0.25, 400, 150, 3);
+
+-- Tabela fornecedor
+INSERT INTO fornecedor (CNPJ, raz_social, nome_fantasia, vendedor, telefone, forma_paga) VALUES
+('22222222222222', 'Fornecedor A', 'Distribuidora XYZ', 'Maria Oliveira', '31911112222', 'Boleto'),
+('33333333333333', 'Fornecedor B', 'Comércio ABC', 'José Santos', '31933334444', 'Cartão');
+
+-- Tabela fornecedor_produto
+INSERT INTO fornecedor_produto (cnpj_fornecedor, cod_produto) VALUES
+('22222222222222', 2),
+('33333333333333', 3);
+
+-- Tabela materia_prima
+INSERT INTO materia_prima (nome, custo, quantidade, data_entrada, cnpj_fornecedor) VALUES
+('Leite em pó', 12.75, 40, '2023-12-06', '22222222222222'),
+('Chocolate em pó', 8.5, 25, '2023-12-06', '33333333333333');
+
+-- Tabela materia_prima_receita
+INSERT INTO materia_prima_receita (cod_mat_prima, cod_receita, quantidade) VALUES
+(2, 1, 2),
+(3, 1, 1);
+
+-- Tabela produto
+INSERT INTO produto (cod_barras, nome, categoria, quantidade, custo, preco, quant_vendido, cod_receita) VALUES
+('9876', 'Bolo de Chocolate', 'Bolos', 10, 25, 40, 5, 1),
+('5432', 'Pão Francês', 'Pães', 20, 8, 15, 10, NULL);
+
+-- Tabela produto_venda
+INSERT INTO produto_venda (cod_produto, cod_venda, quantidade) VALUES
+(4, 2, 3),
+(5, 3, 5);
+
+-- Tabela receita
+INSERT INTO receita (custo_bruto, custo_op, categoria) VALUES
+(15, 30, 'Bolo de Chocolate'),
+(5, 10, 'Pão Francês');
+
+-- Tabela venda
+INSERT INTO venda (data_hora, valor_total) VALUES
+('2023-12-06 10:30:15', 120),
+('2023-12-06 15:45:22', 200);
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+=> Script 2:
+
+-- Tabela almoxarifado (tipos de embalagem)
+INSERT INTO almoxarifado (nome, custo, quantidade, cnpj_fornecedor) VALUES
+('balde', 1.0, 150, '44444444444444'),
+('garfo', 0.8, 300, '55555555555555'),
+('prato', 1.5, 200, '44444444444444');
+
+-- Tabela cliente
+INSERT INTO cliente (cpf_cliente, nome, saldo, telefone, possui_credito) VALUES
+('09876543210', 'Ana Souza', 75.50, '31987654321', 1),
+('54321098765', 'Pedro Ferreira', 25.30, '31901234567', 0);
+
+-- Tabela cliente_venda
+INSERT INTO cliente_venda (cpf_cliente, cod_venda) VALUES
+('09876543210', 4),
+('54321098765', 5);
+
+-- Tabela duplicata
+INSERT INTO duplicata (cod_barras, data_gera, data_venc, situacao, valor, cnpj_fornecedor) VALUES
+('135', '2023-12-08', '2023-12-22', 'não', 12.5, '44444444444444'),
+('246', '2023-12-08', '2023-12-22', 'sim', 18, '55555555555555');
+
+-- Tabela endereco
+INSERT INTO endereco (cep, rua, numero, bairro, cidade, complemento, cpf_cliente) VALUES
+('54321-987', 'Rua das Palmeiras', '300', 'Centro', 'Belo Horizonte', 'Sala 202', '09876543210'),
+('12345-678', 'Av. das Flores', '700', 'Jardim Botânico', 'Curitiba', NULL, '54321098765');
+
+-- Tabela fechamento_caixa
+INSERT INTO fechamento_caixa (data_fechamento, valor_total, valor_cedulas, valor_moedas, valor_debito, valor_credito, codigo_venda) VALUES
+('2023-12-08', 950.25, 400, 0.25, 300, 250, 4),
+('2023-12-09', 700.75, 200, 0.75, 400, 100, 5);
+
+-- Tabela fornecedor
+INSERT INTO fornecedor (CNPJ, raz_social, nome_fantasia, vendedor, telefone, forma_paga) VALUES
+('44444444444444', 'Embalagens Ltda.', 'EmbaPack', 'Carlos Oliveira', '31944445555', 'Transferência'),
+('55555555555555', 'Sacos Plásticos S/A', 'SacoFlex', 'Fernanda Santos', '31955556666', 'Boleto');
+
+-- Tabela fornecedor_produto
+INSERT INTO fornecedor_produto (cnpj_fornecedor, cod_produto) VALUES
+('44444444444444', 4),
+('55555555555555', 5);
+
+-- Tabela materia_prima
+INSERT INTO materia_prima (nome, custo, quantidade, data_entrada, cnpj_fornecedor) VALUES
+('Cacau em pó', 10.5, 30, '2023-12-08', '44444444444444'),
+('Amido de milho', 5, 40, '2023-12-08', '55555555555555');
+
+-- Tabela materia_prima_receita
+INSERT INTO materia_prima_receita (cod_mat_prima, cod_receita, quantidade) VALUES
+(4, 2, 3),
+(5, 2, 2);
+
+-- Tabela produto
+INSERT INTO produto (cod_barras, nome, categoria, quantidade, custo, preco, quant_vendido, cod_receita) VALUES
+('1357', 'Bolo de Brigadeiro', 'Bolos', 8, 30, 45, 3, 2),
+('2468', 'Pão Integral', 'Pães', 15, 10, 18, 8, NULL);
+
+-- Tabela produto_venda
+INSERT INTO produto_venda (cod_produto, cod_venda, quantidade) VALUES
+(6, 4, 2),
+(7, 5, 4);
+
+-- Tabela receita
+INSERT INTO receita (custo_bruto, custo_op, categoria) VALUES
+(20, 35, 'Bolo de Brigadeiro'),
+(8, 15, 'Pão Integral');
+
+-- Tabela venda
+INSERT INTO venda (data_hora, valor_total) VALUES
+('2023-12-08 11:20:00', 90),
+('2023-12-09 14:30:45', 150);
