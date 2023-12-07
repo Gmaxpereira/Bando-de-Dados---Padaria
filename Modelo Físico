@@ -20,7 +20,7 @@ forma_paga VARCHAR(20)
 )
 ;
 
-CREATE TABLE Materia_prima (
+CREATE TABLE materia_prima (
 
 cod_mat_prima INTEGER (PK)
 nome VARCHAR(40)
@@ -31,7 +31,7 @@ cnpj_fornecedor VARCHAR (14) (FK)
 )
 ;
 
-CREATE TABLE Almoxarifado (
+CREATE TABLE almoxarifado (
 
 cod_almox INTEGER (PK) 
 nome VARCHAR(40)
@@ -41,7 +41,7 @@ cnjp_fornecedor VARCHAR(20) (FK)
 )
 ;
 
-CREATE TABLE Fornecedor_produto(
+CREATE TABLE fornecedor_produto(
 
 cnpj_fornecedor VARCHAR (14) (PK) (FK)
 cod_produto INTEGER (PK) (FK)
