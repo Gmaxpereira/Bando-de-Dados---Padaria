@@ -1,6 +1,5 @@
-Para as consultas no Banco de Dados, foram utilizados dois scripts para inciremento de dados.
-
-=> Script 1:
+--Para as consultas no Banco de Dados, foram utilizados dois scripts para inciremento de dados.
+-- Script 1:
 
 -- Tabela almoxarifado
 INSERT INTO almoxarifado (nome, custo, quantidade, cnpj_fornecedor) VALUES
@@ -75,7 +74,7 @@ INSERT INTO venda (data_hora, valor_total) VALUES
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-=> Script 2:
+--Script 2:
 
 -- Tabela almoxarifado (tipos de embalagem)
 INSERT INTO almoxarifado (nome, custo, quantidade, cnpj_fornecedor) VALUES
