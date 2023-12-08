@@ -15,6 +15,7 @@ FROM cliente c
 LEFT JOIN endereco e ON c.cpf_cliente = e.cpf_cliente;
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 -- Uma consulta com junção interna ou externa, com a cláusula de seleção where, e com uma subconsulta.
 SELECT DISTINCT c.nome AS nome_cliente
 FROM cliente c
@@ -22,7 +23,9 @@ JOIN cliente_venda cv ON c.cpf_cliente = cv.cpf_cliente
 JOIN venda v ON cv.cod_venda = v.cod_venda
 JOIN fechamento_caixa fc ON v.cod_venda = fc.codigo_venda
 WHERE v.data_hora BETWEEN fc.data_fechamento AND fc.data_fechamento + INTERVAL 1 DAY;
+
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 -- Uma consulta com junção interna, com a cláusula de seleção where e com a cláusula de agrupamento.
 SELECT p.categoria AS categoria_produto, SUM(v.valor_total) AS total_vendas
 FROM produto p
