@@ -6,6 +6,10 @@ JOIN cliente_venda cv ON v.cod_venda = cv.cod_venda
 JOIN cliente c ON cv.cpf_cliente = c.cpf_cliente
 WHERE c.possui_credito = 1; 
 
+
+Esta consulta realiza uma junção interna entre as tabelas venda, cliente_venda e cliente. Ela recupera a data e hora da venda, o valor total da compra, o CPF do cliente e o 
+nome do cliente para todas as vendas associadas a clientes que possuem crédito (c.possui_credito = 1).
+
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 --Uma consulta com junção externa e com a cláusula de seleção where:
@@ -13,6 +17,11 @@ WHERE c.possui_credito = 1;
 SELECT c.nome AS nome_cliente, e.rua, e.numero, e.bairro, e.cidade
 FROM cliente c
 LEFT JOIN endereco e ON c.cpf_cliente = e.cpf_cliente;
+
+
+Essa consulta retorna o nome do cliente, juntamente com informações de endereço (rua, número, bairro e cidade) se essas informações estiverem disponíveis na tabela endereco. 
+Caso não haja correspondência na tabela endereco para um cliente específico, a consulta ainda trará os detalhes do cliente, mas os campos de endereço (rua, numero, bairro, cidade) 
+serão nulos para esse cliente.
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -24,6 +33,12 @@ JOIN venda v ON cv.cod_venda = v.cod_venda
 JOIN fechamento_caixa fc ON v.cod_venda = fc.codigo_venda
 WHERE v.data_hora BETWEEN fc.data_fechamento AND fc.data_fechamento + INTERVAL 1 DAY;
 
+
+- Fazemos uma junção entre as tabelas cliente, cliente_venda, venda, e fechamento_caixa.
+- Utilizamos a cláusula WHERE para filtrar as vendas que ocorreram nos dias em que houve fechamento de caixa.
+- Utilizamos a subconsulta para comparar as datas de venda com as datas de fechamento de caixa.
+- Essa consulta retornará uma lista de clientes que fizeram compras nos dias em que houve fechamento de caixa.
+
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 -- Uma consulta com junção interna, com a cláusula de seleção where e com a cláusula de agrupamento.
@@ -33,3 +48,10 @@ JOIN produto_venda pv ON p.cod_produto = pv.cod_produto
 JOIN venda v ON pv.cod_venda = v.cod_venda
 WHERE v.data_hora BETWEEN '2023-12-06' AND '2023-12-09'
 GROUP BY p.categoria;
+
+
+- Fazemos uma junção entre as tabelas produto, produto_venda, e venda.
+- Utilizamos a cláusula WHERE para filtrar as vendas que ocorreram dentro de um intervalo de datas específico ('2023-12-06' a '2023-12-09').
+- Utilizamos a cláusula GROUP BY para agrupar os resultados por categoria de produto.
+- Utilizamos a função SUM para calcular o total de vendas para cada categoria.
+- Essa consulta retornará o total de vendas por categoria de produto dentro do intervalo de datas especificado. 
